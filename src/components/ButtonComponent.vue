@@ -1,5 +1,5 @@
 <template>
-  <button @click="click()">{{buttonValue}}</button>
+  <v-btn @click="click()">{{buttonValue}}</v-btn>
 </template>
 <script>
 import {defineComponent} from 'vue'

@@ -1,5 +1,5 @@
 <template>
-  <input v-model="inputValue" @change="onChangeValue()" type="number">
+  <v-text-field v-model="inputValue" variant="outlined" @change="onChangeValue()" type="number"/>
 </template>
 <script>
 import {defineComponent} from 'vue'

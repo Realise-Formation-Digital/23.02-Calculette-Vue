@@ -7,9 +7,11 @@
 import {defineComponent} from 'vue'
 import ButtonComponent from "../components/ButtonComponent.vue";
 import ShowResult from "../components/ShowResult.vue";
+import operationMixin from "../mixins/operationMixin.js";
 export default defineComponent({
   name: "Calculatrice-child-parent",
   components: { ButtonComponent, ShowResult },
+  mixins:[operationMixin],
   data: ()=> {
     return {
       buttonValues: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '/', '*', '=', 'C'],
@@ -48,7 +50,6 @@ export default defineComponent({
             }else {
               this.resultat = this.resultat + valueButton
             }
-            //this.resultat === '0' ? this.resultat = '' + valueButton :
           }else{
             this.inputValue2 = this.inputValue2 + valueButton
           }
@@ -61,45 +62,32 @@ export default defineComponent({
         case '=': {
           switch (this.operation) {
             case '+':{
-              this.addition()
+              this.resultat = this.addition(parseFloat(this.resultat), parseFloat(this.inputValue2))
+              this.clearInput2()
+              this.clearOperation()
               break;
             }
             case '-':{
-              this.soustraction()
+              this.resultat = this.soustraction(parseFloat(this.resultat), parseFloat(this.inputValue2))
+              this.clearInput2()
+              this.clearOperation()
               break;
             }
             case '*':{
-              this.multiplication()
+              this.resultat = this.multiplication(parseFloat(this.resultat), parseFloat(this.inputValue2))
+              this.clearInput2()
+              this.clearOperation()
               break;
             }
             case '/':{
-              this.division();
+              this.resultat = this.division(parseFloat(this.resultat), parseFloat(this.inputValue2));
+              this.clearInput2()
+              this.clearOperation()
               break;
             }
           }
         }
       }
-    },
-
-    addition(){
-      this.resultat = parseFloat(this.resultat) + parseFloat(this.inputValue2)
-      this.clearInput2()
-      this.clearOperation()
-    },
-    soustraction(){
-      this.resultat = parseFloat(this.resultat) - parseFloat(this.inputValue2)
-      this.clearInput2()
-      this.clearOperation()
-    },
-    multiplication(){
-      this.resultat = parseFloat(this.resultat) * parseFloat(this.inputValue2)
-      this.clearInput2()
-      this.clearOperation()
-    },
-    division(){
-      this.resultat = parseFloat(this.resultat) / parseFloat(this.inputValue2)
-      this.clearInput2()
-      this.clearOperation()
     },
 
     clearInput2(){

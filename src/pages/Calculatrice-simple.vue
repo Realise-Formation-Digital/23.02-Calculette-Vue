@@ -9,9 +9,11 @@ import {defineComponent} from 'vue'
 import ButtonComponent from "../components/ButtonComponent.vue";
 import Resultat from "../components/Resultat.vue";
 import InputComponent from "../components/InputComponent.vue";
+import operationMixin from "../mixins/operationMixin.js";
 export default defineComponent({
   name: "Calculatrice-simple",
   components:{ButtonComponent, Resultat, InputComponent},
+  mixins:[operationMixin],
   data: () => {
     return{
       buttonComponentValues: ['+', '-', '/', '*'],
@@ -22,34 +24,22 @@ export default defineComponent({
     }
   },
   methods:{
-    addition(){
-      this.resultat = this.input1Val + this.input2Val
-    },
-    soustraction(){
-      this.resultat = this.input1Val - this.input2Val
-    },
-    multiplication(){
-      this.resultat = this.input1Val * this.input2Val
-    },
-    division(){
-      this.resultat = this.input1Val / this.input2Val
-    },
     handleButtonValueElement(value){
       switch (value) {
         case '+':{
-          this.addition()
+          this.resultat = this.addition(this.input1Val, this.input2Val)
           break;
         }
         case '-':{
-          this.soustraction()
+          this.resultat = this.soustraction(this.input1Val, this.input2Val)
           break;
         }
         case '*':{
-          this.multiplication()
+          this.resultat = this.multiplication(this.input1Val, this.input2Val)
           break;
         }
         case '/':{
-          this.division()
+          this.resultat = this.division(this.input1Val, this.input2Val)
           break;
         }
       }

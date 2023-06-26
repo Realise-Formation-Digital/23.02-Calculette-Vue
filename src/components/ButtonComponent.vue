@@ -15,7 +15,6 @@ export default defineComponent({
   },
   methods:{
     click(){
-      console.log('Je suis l enfant', this.buttonValue)
       this.$emit('buttonValueEmit', this.buttonValue)
     }
   }

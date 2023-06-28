@@ -9,6 +9,7 @@
     <router-link to="/calculatrice-child-parent">Child PArent</router-link><br>
     <router-link to="/calculatrice-simple">Simple</router-link><br>
     <router-link to="/">Home</router-link>
+    <router-link to="/beers-list">BeerList</router-link>
 
   </div>
   <div>

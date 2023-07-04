@@ -10,15 +10,6 @@ class BeersService {
       console.error(e)
     }
   }
-  
-  static async postBeer(){
-    try {
-      
-    }catch (e) {
-      
-    }
-  }
-
 }
 
 export default BeersService
